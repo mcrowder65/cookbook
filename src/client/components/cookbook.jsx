@@ -38,7 +38,7 @@ class Cookbook extends Component {
                        _addRecipe={this.props.addRecipe}/>
         <button id="add-recipe-button"
                 onClick={this.setAddingNewRecipeTrue}>
-          Add Recipe
+          AddRecipe
         </button>
       </div>
     );
