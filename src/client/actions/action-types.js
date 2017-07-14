@@ -6,4 +6,3 @@ export const UPDATE_RECIPE = 'UPDATE_RECIPE';
 export const SET_EDITING_RECIPE = 'SET_EDITING_RECIPE';
 export const SET_ADDING_NEW_RECIPE = 'SET_ADDING_NEW_RECIPE';
 export const ADD_RECIPE = 'ADD_RECIPE';
-asdf
