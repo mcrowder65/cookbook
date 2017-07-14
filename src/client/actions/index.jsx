@@ -1,31 +1,32 @@
+import * as actionTypes from './action-types';
 export const toggleCheck = () => {
   return {
-    type: 'TOGGLE_CHECK'
+    type: actionTypes.TOGGLE_CHECK
   };
 };
 
 export const incNumber = () => {
   return {
-    type: 'INC_NUMBER'
+    type: actionTypes.INC_NUMBER
   };
 };
 
 export const decNumber = () => {
   return {
-    type: 'DEC_NUMBER'
+    type: actionTypes.DEC_NUMBER
   };
 };
 
 export const removeRecipe = (id) => {
   return {
-    type: 'REMOVE_RECIPE',
+    type: actionTypes.REMOVE_RECIPE,
     id
   };
 };
 
 export const updateRecipe = (oldTitle, title, ingredients) => {
   return {
-    type: 'UPDATE_RECIPE',
+    type: actionTypes.UPDATE_RECIPE,
     oldTitle,
     title,
     ingredients
@@ -34,7 +35,7 @@ export const updateRecipe = (oldTitle, title, ingredients) => {
 
 export const setEditingRecipe = (title, ingredients) => {
   return {
-    type: 'SET_EDITING_RECIPE',
+    type: actionTypes.SET_EDITING_RECIPE,
     title,
     ingredients
   };
@@ -42,14 +43,14 @@ export const setEditingRecipe = (title, ingredients) => {
 
 export const setAddingNewRecipe = (addingNewRecipe) => {
   return {
-    type: 'SET_ADDING_NEW_RECIPE',
+    type: actionTypes.SET_ADDING_NEW_RECIPE,
     addingNewRecipe
   };
 };
 
 export const addRecipe = (title, ingredients) => {
   return {
-    type: 'ADD_RECIPE',
+    type: actionTypes.ADD_RECIPE,
     title,
     ingredients
   };

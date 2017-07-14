@@ -6,3 +6,4 @@ rules:
   quotes:
     - 2
     - "single"
+  no-console: "off"

@@ -1,13 +1,14 @@
 import {combineReducers} from 'redux';
+import * as actionTypes from '../actions/action-types';
 
 
 const recipes = (store, action) => {
-  if (action.type === 'REMOVE_RECIPE') {
+  if (action.type === actionTypes.REMOVE_RECIPE) {
     return store.filter((recipe) => {
       return recipe.title !== action.id;
     });
   }
-  if (action.type === 'UPDATE_RECIPE') {
+  if (action.type === actionTypes.UPDATE_RECIPE) {
     return store.map((recipe) => {
       return recipe.title === action.oldTitle ? {
         title: action.title,
@@ -16,7 +17,7 @@ const recipes = (store, action) => {
     });
   }
 
-  if (action.type === 'ADD_RECIPE') {
+  if (action.type === actionTypes.ADD_RECIPE) {
     return [
       ...store, {
         title: action.title,
@@ -28,7 +29,7 @@ const recipes = (store, action) => {
 };
 
 const editingRecipe = (store, action) => {
-  if (action.type === 'SET_EDITING_RECIPE') {
+  if (action.type === actionTypes.SET_EDITING_RECIPE) {
     return {
       title: action.title,
       ingredients: action.ingredients
@@ -41,14 +42,14 @@ const editingRecipe = (store, action) => {
 };
 
 const addingNewRecipe = (store, action) => {
-  if (action.type === 'SET_ADDING_NEW_RECIPE') {
+  if (action.type === actionTypes.SET_ADDING_NEW_RECIPE) {
     return action.addingNewRecipe;
   }
   return store || false;
 };
 
 const checkBox = (store, action) => {
-  if (action.type === 'TOGGLE_CHECK') {
+  if (action.type === actionTypes.TOGGLE_CHECK) {
     return {
       checked: !store.checked
     };
@@ -58,11 +59,11 @@ const checkBox = (store, action) => {
 };
 
 const number = (store, action) => {
-  if (action.type === 'INC_NUMBER') {
+  if (action.type === actionTypes.INC_NUMBER) {
     return {
       value: store.value + 1
     };
-  } else if (action.type === 'DEC_NUMBER') {
+  } else if (action.type === actionTypes.DEC_NUMBER) {
     return {
       value: store.value - 1
     };
