@@ -1,25 +1,19 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {shallow} from 'enzyme';
+
 import EditRecipeForm from 'client/components/edit-recipe-form';
+
 const _updateRecipe = (title, newTitle, ingredients) => {
   return `${title} ${newTitle} ${ingredients}`;
 };
 describe('EditRecipeForm', () => {
   let component;
-  let container;
-  //TODO add initial here
   beforeEach(() => {
-    container = document.createElement('div');
-    //TODO set updateRecipe
-    component = ReactDOM.render(
-      <EditRecipeForm updateRecipe={_updateRecipe}/>,
-      container
+    component = shallow(
+      <EditRecipeForm updateRecipe={_updateRecipe}/>
     );
   });
 
-  afterEach(() => {
-    ReactDOM.unmountComponentAtNode(container);
-  });
 
   it('Test render', () => {
     expect(component).to.not.be.false;
@@ -27,20 +21,20 @@ describe('EditRecipeForm', () => {
 
   it('Test setters', () => {
     const newTitle = 'chicken sandwich';
-    component.updateTitle({
+    component.instance().updateTitle({
       target: {
         value: newTitle
       }
     });
-    expect(component.state.title).to.equal(newTitle);
+    expect(component.instance().state.title).to.equal(newTitle);
 
     const newIngredients = 'chicken,bread';
-    component.updateIngredients({
+    component.instance().updateIngredients({
       target: {
         value: newIngredients
       }
     });
-    expect(component.state.ingredients).to.equal(newIngredients);
+    expect(component.instance().state.ingredients).to.equal(newIngredients);
   });
 });
 
