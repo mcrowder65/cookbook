@@ -1,7 +1,7 @@
 import {createStore} from 'redux';
 
-import rootReducer from '../../../src/client/reducers/index';
-import * as actions from '../../../src/client/actions/index';
+import rootReducer from '../../../src/client/reducers';
+import * as actions from '../../../src/client/actions';
 
 describe('reducer test', () => {
   const initialState = {
@@ -74,7 +74,43 @@ describe('reducer test', () => {
       ingredients: ['chicken', 'bread']
     };
     store.dispatch(actions.addRecipe(newRecipe.title, newRecipe.ingredients));
-    expect(store.getState().recipes.length).equals(initialState.recipes.length + 1);
+    expect(store.getState().recipes.length).equals(1);
     expect(store.getState().recipes[store.getState().recipes.length - 1]).eql(newRecipe);
+
+    const updatedRecipe = {
+      ...newRecipe,
+      title: 'chicken burger'
+    };
+    store.dispatch(actions.updateRecipe(newRecipe.title,
+      updatedRecipe.title, updatedRecipe.ingredients));
+    expect(store.getState().recipes[0]).eql(updatedRecipe);
+  });
+
+  it('test editing recipe', () => {
+    store.dispatch(actions.setEditingRecipe(initialState.recipes[0].title,
+      initialState.recipes[0].ingredients));
+    expect(store.getState().editingRecipe).eql(initialState.recipes[0]);
+  });
+
+  it('test adding recipe', () => {
+    expect(store.getState().addingNewRecipe).equals(initialState.addingNewRecipe);
+
+    store.dispatch(actions.setAddingNewRecipe(!initialState.addingNewRecipe));
+
+    expect(store.getState().addingNewRecipe).equals(!initialState.addingNewRecipe);
+
+    store.dispatch(actions.setAddingNewRecipe(!!initialState.addingNewRecipe));
+
+    expect(store.getState().addingNewRecipe).equals(!!initialState.addingNewRecipe);
+  });
+
+  it('test checkbox', () => {
+    expect(store.getState().checkBox.checked).equals(initialState.checkBox.checked);
+
+    store.dispatch(actions.toggleCheck());
+    expect(store.getState().checkBox.checked).equals(!initialState.checkBox.checked);
+
+    store.dispatch(actions.toggleCheck());
+    expect(store.getState().checkBox.checked).equals(!!initialState.checkBox.checked);
   });
 });

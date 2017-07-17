@@ -1,4 +1,4 @@
-import * as actions from '../../../src/client/actions/index';
+import * as actions from '../../../src/client/actions';
 import * as actionTypes from '../../../src/client/actions/action-types';
 
 describe('actions', () => {
