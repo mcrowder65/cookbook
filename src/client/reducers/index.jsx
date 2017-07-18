@@ -30,9 +30,10 @@ const recipes = (store, action) => {
 
 const editingRecipe = (store, action) => {
   if (action.type === actionTypes.SET_EDITING_RECIPE) {
+    const {title, ingredients} = action;
     return {
-      title: action.title,
-      ingredients: action.ingredients
+      title,
+      ingredients
     };
   }
   return store || {
